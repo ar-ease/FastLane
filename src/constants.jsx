@@ -1,32 +1,7 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+export const IMG_CDN_URL =
+  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 
-const Title = () => (
-  <a href="/">
-    <img
-      className="logo"
-      alt="logo"
-      src="https://previews.123rf.com/images/shmakova/shmakova2206/shmakova220600109/188025742-grill-menu-hand-drawn-inscription-slogan-food-court-logo-menu-restaurant-bar-cafe-vector-steak-on.jpg"
-    />
-  </a>
-);
-
-const Header = () => {
-  return (
-    <div className="header">
-      <Title />
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-const restaurantList = [
+export const restaurantList = [
   {
     info: {
       id: "90025",
@@ -877,53 +852,3 @@ const restaurantList = [
     },
   },
 ];
-// const pizzaHut = {
-//   name: "Pizza Hut",
-//   image:
-//     "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/2b4f62d606d1b2bfba9ba9e5386fabb7",
-//   cusines: ["Pizzas", "monacos"],
-//   rating: "4.2",
-// };
-const RestaurantCard = ({ name, cuisines, cloudinaryImageId, avgRating }) => {
-  return (
-    <div className="card">
-      <img
-        src={
-          "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-          cloudinaryImageId
-        }
-      ></img>
-      <h2>{name}</h2>
-      <h3>{cuisines.join(", ")}</h3>
-      <h4>{avgRating} Star</h4>
-    </div>
-  );
-};
-const Body = () => {
-  return (
-    <>
-      <div className="restaurant-list">
-        {restaurantList.map((restaurant) => {
-          return <RestaurantCard {...restaurant.info} />;
-        })}
-      </div>
-    </>
-  );
-};
-const Footer = () => (
-  <>
-    <h2>Footer</h2>
-  </>
-);
-const AppLayout = () => {
-  return (
-    <>
-      <Header />
-      <Body />
-      <Footer />
-    </>
-  );
-};
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
