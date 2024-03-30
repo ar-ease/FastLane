@@ -25,7 +25,7 @@ const Body = () => {
         <button
           className="seacrch-btn"
           onClick={() => {
-            //need to filter the data
+            
             const data = filterData(searchText, restaurants);
             setRestaurants(data);
           }}
