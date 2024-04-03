@@ -1,11 +1,10 @@
+import Logo from "../assets/food.png";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
 const Title = () => (
   <a href="/">
-    <img
-      className="logo"
-      alt="logo"
-      src="https://previews.123rf.com/images/shmakova/shmakova2206/shmakova220600109/188025742-grill-menu-hand-drawn-inscription-slogan-food-court-logo-menu-restaurant-bar-cafe-vector-steak-on.jpg"
-    />
+    <img className="logo" alt="logo" src={Logo} />
   </a>
 );
 const Header = () => {
@@ -15,8 +14,12 @@ const Header = () => {
       <Title />
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About</li>
+          <Link to="/">
+            <li>Home</li>
+          </Link>
+          <Link to="/about">
+            <li>About</li>
+          </Link>
           <li>Contact</li>
           <li>Cart</li>
         </ul>
