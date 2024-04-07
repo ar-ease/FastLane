@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IMG_CDN_URL } from "../constants.jsx";
 import ShimmerUi from "./Shimmer";
+import useRestaurant from "../utils/useRestaurant.jsx";
 
 const getMenu = (json) => {
   const filterMenu = json.data.cards.filter((data) => {
@@ -26,30 +27,12 @@ const catagoryItems = (json) => {
 
 const RestaurantMenu = () => {
   const params = useParams();
-  const { id } = params;
+  const { resId } = params;
 
-  const [restaurant, setRestaurant] = useState(null);
   const [allCatagory, setAllCatagory] = useState([]);
 
-  useEffect(() => {
-    getRestaurantInfo();
-  }, []);
-  const getRestaurantInfo = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=22.51800&lng=88.38320&restaurantId=" +
-        id
-    );
-    const json = await data.json();
-    const menu = await getMenu(json);
-    const Items = catagoryItems(json);
-    // console.log(json);
-    // console.log(menu);
-    setRestaurant(menu[0].card.card.info);
-    setAllCatagory(Items);
-    // console.log(Items);
-  };
+  const restaurant = useRestaurant(resId);
 
-  //   console.log(allCatagory[0]?.card.card.id);
   return !restaurant ? (
     <ShimmerUi />
   ) : (

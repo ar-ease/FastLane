@@ -3,14 +3,7 @@ import { restaurantList } from "../constants.jsx";
 import RestaurantCard from "./RestaurantCard.jsx";
 import ShimmerUi from "./Shimmer.jsx";
 import { Link } from "react-router-dom";
-
-filterData = (searchText, restaurants) => {
-  const filterData = restaurants.filter((restaurant) =>
-    restaurant?.info?.name?.toLowerCase()?.includes(searchText.toLowerCase())
-  );
-
-  return filterData;
-};
+import { filterData } from "../utils/helper.jsx";
 
 const getXRestaurants = (json) => {
   const filterResturant = json.data.cards.filter((item) => {
