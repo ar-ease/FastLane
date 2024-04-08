@@ -35,6 +35,7 @@ const Body = () => {
       restaurants[1].card.card.gridElements.infoWithStyle.restaurants
     );
   };
+
   if (!allRestaurants) return null;
   // if (filteredRestaurants?.length === 0) return <h1>No Resturant Found </h1>;
 

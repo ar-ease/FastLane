@@ -4,34 +4,10 @@ import { IMG_CDN_URL } from "../constants.jsx";
 import ShimmerUi from "./Shimmer";
 import useRestaurant from "../utils/useRestaurant.jsx";
 
-const getMenu = (json) => {
-  const filterMenu = json.data.cards.filter((data) => {
-    return (
-      data.card?.card?.["@type"] ===
-      "type.googleapis.com/swiggy.presentation.food.v2.Restaurant"
-      //     "type.googleapis.com/swiggy.presentation.food.v2.Restaurant"
-    );
-  });
-  return filterMenu;
-};
-const catagoryItems = (json) => {
-  const filterCatagoryItems =
-    json.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards.filter((data) => {
-      return (
-        data?.card?.card?.["@type"] ===
-        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
-      );
-    });
-  return filterCatagoryItems;
-};
-
 const RestaurantMenu = () => {
   const params = useParams();
-  const { resId } = params;
-
-  const [allCatagory, setAllCatagory] = useState([]);
-
-  const restaurant = useRestaurant(resId);
+  const { id } = params;
+  const { restaurant, allCatagory } = useRestaurant(id);
 
   return !restaurant ? (
     <ShimmerUi />
