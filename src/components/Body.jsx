@@ -16,7 +16,7 @@ const Body = () => {
     <ShimmerUi />
   ) : (
     <>
-      <div className="search-container">
+      <div className="search-container p-5 bg-blue-50 my-3">
         <input
           type="text"
           className="search-input"
@@ -25,7 +25,7 @@ const Body = () => {
           onChange={(e) => setSearchText(e.target.value)}
         />
         <button
-          className="seacrch-btn"
+          className="p-2 m-2 bg-purple-400 rounded-md"
           onClick={() => {
             const data = filterData(searchText, allRestaurants);
             setfilteredRestaurants(data);
@@ -34,7 +34,7 @@ const Body = () => {
           Search
         </button>
       </div>
-      <div className="restaurant-list">
+      <div className="flex flex-wrap">
         {filteredRestaurants.map((restaurant) => {
           return (
             <Link
