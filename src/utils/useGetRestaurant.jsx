@@ -31,6 +31,6 @@ const useGetRestaurant = () => {
     );
   };
 
-  return { allRestaurants, filteredRestaurants };
+  return { allRestaurants, filteredRestaurants, setfilteredRestaurants };
 };
 export default useGetRestaurant;

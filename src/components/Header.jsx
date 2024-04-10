@@ -5,11 +5,7 @@ import useOnline from "../utils/useOnline";
 
 const Title = () => (
   <a href="/">
-    <img
-      className="h-28  p-2 rounded-full object-cover"
-      alt="logo"
-      src={Logo}
-    />
+    <img className=" rounded-full object-cover" alt="logo" src={Logo} />
   </a>
 );
 const Header = () => {
@@ -41,12 +37,19 @@ const Header = () => {
           <li className="px-2 font-bold">Cart</li>
         </ul>
       </div>
-      <h1 className="px-5">{isOnline ? "☀︎" : "🔴"}</h1>
+      <h1 className="m-12   rounded-2xl  bg-gray-100 w-20">
+        {isOnline ? "☀︎" : "🔴"}
+      </h1>
       {isLoggedIn === true ? (
-        <button onClick={() => setIsLoggedIn(false)}>Logout</button>
+        <button
+          className="m-10 p-2 h-10 w-20 rounded-2xl bg-orange-400 text-white hover:bg-orange-600 focus:ring focus:ring-gray-600 focus:ring-opacity-8 "
+          onClick={() => setIsLoggedIn(false)}
+        >
+          Logout
+        </button>
       ) : (
         <button
-          className="m-10 h-10 w-20 rounded-2xl bg-orange-400 text-white hover:bg-orange-600 focus:ring focus:ring-gray-600 focus:ring-opacity-8 "
+          className="m-10 p-2 h-10 w-20 rounded-2xl bg-orange-400 text-white hover:bg-orange-600 focus:ring focus:ring-gray-600 focus:ring-opacity-8 "
           onClick={() => setIsLoggedIn(true)}
         >
           Login
