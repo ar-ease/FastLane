@@ -5,7 +5,7 @@ import ShimmerUi from "./Shimmer.jsx";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper.jsx";
 import useGetRestaurant from "../utils/useGetRestaurant.jsx";
-const Body = () => {
+const Body = ({ user }) => {
   const [searchText, setSearchText] = useState("");
 
   const { allRestaurants, filteredRestaurants, setfilteredRestaurants } =
@@ -44,7 +44,7 @@ const Body = () => {
               to={"/restaurant/" + restaurant.info.id}
               key={restaurant.info.id}
             >
-              <RestaurantCard {...restaurant.info} />
+              <RestaurantCard {...restaurant.info} user={user } />
             </Link>
           );
         })}
