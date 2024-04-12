@@ -10,11 +10,12 @@ import Contact from "./components/Contact.jsx";
 import RestaurantMenu from "./components/RestaurantMenu.jsx";
 import Profile from "./components/Profile.jsx";
 import ShimmerUi from "./components/Shimmer.jsx";
+import Faq from "./components/Faq.jsx";
 
 //chunking
 
 const Instamart = lazy(() => {
-  return import("./components/Instamart.jsx");
+  return import("./components/Faq.jsx");
 });
 
 const AppLayout = () => {
@@ -62,10 +63,10 @@ const appRouter = createBrowserRouter([
         element: <RestaurantMenu />,
       },
       {
-        path: "instamart",
+        path: "faq",
         element: (
           <Suspense fallback={<ShimmerUi />}>
-            <Instamart />
+            <Faq />
           </Suspense>
         ),
       },

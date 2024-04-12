@@ -44,7 +44,7 @@ const Body = ({ user }) => {
               to={"/restaurant/" + restaurant.info.id}
               key={restaurant.info.id}
             >
-              <RestaurantCard {...restaurant.info} user={user } />
+              <RestaurantCard {...restaurant.info} user={user} />
             </Link>
           );
         })}
