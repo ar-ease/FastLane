@@ -1,37 +1,33 @@
 import { useState } from "react";
 
-const Section = ({ title, description, isVisible, setIsVisible }) => {
+const Section = ({ title, description, isVisible, visibility }) => {
+  console.log(isVisible);
+  console.log(visibility);
   return (
     <>
       <div className="border border-black p-2 m-2">
         <h1>{title}</h1>
         {isVisible ? (
-          <button
-            onClick={() => setIsVisible(false)}
-            className="cursor-pointer underline"
-          >
-            Hide
-          </button>
+          <>
+            <button onClick={visibility} className="cursor-pointer underline">
+              Hide
+            </button>
+            <p>{description}</p>
+          </>
         ) : (
-          <button
-            onClick={() => setIsVisible(true)}
-            className="cursor-pointer underline"
-          >
-            Show
-          </button>
+          <>
+            <button onClick={visibility} className="cursor-pointer underline">
+              Show
+            </button>
+          </>
         )}
-        {isVisible && <p>{description}</p>}
       </div>
     </>
   );
 };
 
 const Faq = () => {
-  const [sectionConfig, setSectionConfig] = useState({
-    showAbout: false,
-    showCreator: false, 
-    showWho: false,
-  });
+  const [isVisibleSection, setIsVisibleSection] = useState("");
   return (
     <>
       <h1>Welcome</h1>
@@ -44,38 +40,20 @@ const Faq = () => {
           Explore a world of flavors and let us bring the culinary delights
           right to your doorstep. Download now and embark on a delicious journey
           with us!`}
-        isVisible={sectionConfig.showAbout}
-        setIsVisible={() => {
-          setSectionConfig({
-            showAbout: !sectionConfig.showAbout,
-            showCreator: false,
-            showWho: false,
-          });
-        }}
+        isVisible={isVisibleSection === "about"}
+        visibility={() => setIsVisibleSection("about")}
       ></Section>
       <Section
         title={"Who made it"}
         description={`Arghya Jana(arry-ease)`}
-        isVisible={sectionConfig.showCreator}
-        setIsVisible={() => {
-          setSectionConfig({
-            showAbout: false,
-            showCreator: true,
-            showWho: false,
-          });
-        }}
+        isVisible={isVisibleSection === "creator"}
+        visibility={() => setIsVisibleSection("creator")}
       ></Section>
       <Section
         title={"who is he"}
         description={`he's rockstar`}
-        isVisible={sectionConfig.showWho}
-        setIsVisible={() => {
-          setSectionConfig({
-            showAbout: false,
-            showCreator: false,
-            showWho: true,
-          });
-        }}
+        isVisible={isVisibleSection === "who"}
+        visibility={() => setIsVisibleSection("who")}
       ></Section>
     </>
   );

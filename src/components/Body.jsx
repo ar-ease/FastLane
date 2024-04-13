@@ -1,12 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { restaurantList } from "../constants.jsx";
 import RestaurantCard from "./RestaurantCard.jsx";
 import ShimmerUi from "./Shimmer.jsx";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper.jsx";
 import useGetRestaurant from "../utils/useGetRestaurant.jsx";
-const Body = ({ user }) => {
+import userContext from "../utils/userContext.jsx";
+
+const Body = () => {
   const [searchText, setSearchText] = useState("");
+  const { user, setUser } = useContext(userContext);
 
   const { allRestaurants, filteredRestaurants, setfilteredRestaurants } =
     useGetRestaurant();
@@ -27,6 +30,7 @@ const Body = ({ user }) => {
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
         />
+
         <button
           className="p-2 m-2 bg-gray-300 text-black rounded-2xl hover:bg-slate-600 hover:text-white"
           onClick={() => {
@@ -36,6 +40,32 @@ const Body = ({ user }) => {
         >
           Search
         </button>
+        <input
+          type="text"
+          className="bg-gray-100 rounded-2xl placeholder-gray-600 w-72 h-9
+          "
+          placeholder="Write anything"
+          value={user.name}
+          onChange={(e) =>
+            setUser({
+              ...user,
+              name: e.target.value,
+            })
+          }
+        />
+        <input
+          type="text"
+          className="bg-gray-100 rounded-2xl placeholder-gray-600 w-72 h-9
+          "
+          placeholder="Write anything"
+          value={user.email}
+          onChange={(e) =>
+            setUser({
+              ...user,
+              email: e.target.value,
+            })
+          }
+        />
       </div>
       <div className="flex flex-wrap">
         {filteredRestaurants.map((restaurant) => {
@@ -44,7 +74,7 @@ const Body = ({ user }) => {
               to={"/restaurant/" + restaurant.info.id}
               key={restaurant.info.id}
             >
-              <RestaurantCard {...restaurant.info} user={user} />
+              <RestaurantCard {...restaurant.info} />
             </Link>
           );
         })}
