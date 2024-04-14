@@ -52,21 +52,8 @@ const Body = () => {
             })
           }
         />
-        <input
-          type="text"
-          className="bg-gray-100 rounded-2xl placeholder-gray-600 w-72 h-9
-          "
-          placeholder="Write anything"
-          value={user.email}
-          onChange={(e) =>
-            setUser({
-              ...user,
-              email: e.target.value,
-            })
-          }
-        />
       </div>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap justify-center">
         {filteredRestaurants.map((restaurant) => {
           return (
             <Link
