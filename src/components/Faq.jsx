@@ -1,6 +1,12 @@
 import { useState } from "react";
 
-const Section = ({ title, description, isVisible, visibility }) => {
+const Section = ({
+  title,
+  description,
+  isVisible,
+  visibility,
+  setIsVisibleSection,
+}) => {
   console.log(isVisible);
   console.log(visibility);
   return (
@@ -41,19 +47,25 @@ const Faq = () => {
           right to your doorstep. Download now and embark on a delicious journey
           with us!`}
         isVisible={isVisibleSection === "about"}
-        visibility={() => setIsVisibleSection("about")}
+        visibility={() => {
+          setIsVisibleSection(isVisibleSection === "about" ? "" : "about");
+        }}
       ></Section>
       <Section
         title={"Who made it"}
         description={`Arghya Jana(arry-ease)`}
         isVisible={isVisibleSection === "creator"}
-        visibility={() => setIsVisibleSection("creator")}
+        visibility={() => {
+          setIsVisibleSection(isVisibleSection === "creator" ? "" : "creator");
+        }}
       ></Section>
       <Section
         title={"who is he"}
         description={`he's rockstar`}
         isVisible={isVisibleSection === "who"}
-        visibility={() => setIsVisibleSection("who")}
+        visibility={() => {
+          setIsVisibleSection(isVisibleSection === "who" ? "" : "who");
+        }}
       ></Section>
     </>
   );
