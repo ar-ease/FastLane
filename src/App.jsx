@@ -12,8 +12,8 @@ import Profile from "./components/Profile.jsx";
 import ShimmerUi from "./components/Shimmer.jsx";
 import Faq from "./components/Faq.jsx";
 import userContext from "./utils/userContext.jsx";
-import { Provider } from "react-redux ";
-import store from "./utils/store.jsx"; 
+import { Provider } from "react-redux";
+import store from "./utils/store.jsx";
 //chunking
 
 const Instamart = lazy(() => {
