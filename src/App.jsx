@@ -12,7 +12,8 @@ import Profile from "./components/Profile.jsx";
 import ShimmerUi from "./components/Shimmer.jsx";
 import Faq from "./components/Faq.jsx";
 import userContext from "./utils/userContext.jsx";
-
+import { Provider } from "react-redux ";
+import store from "./utils/store.jsx"; 
 //chunking
 
 const Instamart = lazy(() => {
@@ -26,11 +27,13 @@ const AppLayout = () => {
   });
   return (
     <>
-      <userContext.Provider value={{ user: user, setUser: setUser }}>
-        <Header />
-        <Outlet />
-        <Footer />
-      </userContext.Provider>
+      <Provider store={store}>
+        <userContext.Provider value={{ user: user, setUser: setUser }}>
+          <Header />
+          <Outlet />
+          <Footer />
+        </userContext.Provider>
+      </Provider>
     </>
   );
 };
