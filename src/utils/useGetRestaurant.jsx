@@ -5,7 +5,7 @@ const useGetRestaurant = () => {
   const [filteredRestaurants, setfilteredRestaurants] = useState([]);
 
   const getXRestaurants = (json) => {
-    const filterResturant = json.data.cards.filter((item) => {
+    const filterResturant = json.data?.cards?.filter((item) => {
       return (
         item?.card?.card?.gridElements?.infoWithStyle["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.FavouriteRestaurantInfoWithStyle"

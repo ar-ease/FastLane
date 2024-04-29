@@ -3,12 +3,12 @@ import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
 import UserContext from "../utils/userContext";
-
+import { useSelector } from "react-redux";
 const Title = () => (
   <a href="/">
     <img
       class="ml-9 mr-10 py-5
-     w-48 h-48"  
+     w-48 h-48"
       alt="logo"
       src={Logo}
     />
@@ -19,6 +19,8 @@ const Header = () => {
 
   const isOnline = useOnline();
   const { user } = useContext(UserContext);
+  const cart = useSelector((store) => store.cart.items);
+
   return (
     <div
       class="flex justify-between bg-transparent
@@ -41,7 +43,7 @@ const Header = () => {
             <li class="px-2 font-bold">FAQ</li>
           </Link>
 
-          <li class="px-2 font-bold">Cart</li>
+          <li class="px-2 font-bold">Cart - {cart.length}</li>
         </ul>
       </div>
       <div class="p-5 m-5">{isOnline ? "☀︎" : "🔴"}</div>
