@@ -32,22 +32,27 @@ const RestaurantMenu = () => {
       <div className="p-5">
         <h1>Menu</h1>
         <ul className="">
-          {allCatagory} -{" "}
-          {/* .map((item) => {
+          {allCatagory.map((item, index) => {
             return (
-              <div key={item?.card?.card?.title}>
-                <li>
-                  {item?.card?.card?.title}
-                  <button
-                    className="p-2 bg-orange-200"
-                    onClick={() => addFoodItem(item)}
-                  >
-                    Add
-                  </button>
-                </li>
+              <div key={index}>
+                <h2 className="font-bold">{item?.card?.card?.title}</h2>
+
+                {item?.card?.card?.itemCards.map((items) => {
+                  return (
+                    <div>
+                      <span className="px-2">{items?.card?.info?.name}</span>
+                      <button
+                        className="p-2 bg-orange-200"
+                        onClick={() => addFoodItem(item)}
+                      >
+                        Add
+                      </button>
+                    </div>
+                  );
+                })}
               </div>
             );
-          })} */}
+          })}{" "}
         </ul>
       </div>
     </div>

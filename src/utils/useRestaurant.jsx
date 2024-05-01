@@ -36,11 +36,14 @@ const useRestaurant = (id) => {
     const json = await data.json();
     const menu = await getMenu(json);
 
-    const catagoryData = await catagoryItems(json);
-    console.log(catagoryData);
-    const Items = await catagoryData.map((catagoryData) => {
-      return catagoryData?.card?.card?.itemCards[3]?.card?.info?.name;
-    });
+    const Items = await catagoryItems(json);
+    // console.log(catagoryData);
+    // const Items = await catagoryData.map((catagoryData) => {
+    //   return catagoryData?.card?.card?.itemCards.map((item) => {
+    //     return item?.card?.info?.name;
+    //   });
+    // [3]?.card?.info?.name;
+    // });
 
     // console.log(json);
     // console.log(menu);
