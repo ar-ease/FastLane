@@ -12,7 +12,7 @@ const RestaurantMenu = () => {
   const { restaurant, allCatagory } = useRestaurant(id);
   const dispatch = useDispatch();
   const addFoodItem = (item) => {
-    dispatch(addItem());
+    dispatch(addItem(item));
   };
 
   return !restaurant ? (
@@ -32,15 +32,15 @@ const RestaurantMenu = () => {
       <div className="p-5">
         <h1>Menu</h1>
         <ul className="">
-          {allCatagory.map((item, index) => {
+          {allCatagory.map((items, index) => {
             return (
               <div key={index}>
-                <h2 className="font-bold">{item?.card?.card?.title}</h2>
+                <h2 className="font-bold">{items?.card?.card?.title}</h2>
 
-                {item?.card?.card?.itemCards.map((items) => {
+                {items?.card?.card?.itemCards.map((item) => {
                   return (
                     <div>
-                      <span className="px-2">{items?.card?.info?.name}</span>
+                      <span className="px-2">{item?.card?.info?.name}</span>
                       <button
                         className="p-2 bg-orange-200"
                         onClick={() => addFoodItem(item)}

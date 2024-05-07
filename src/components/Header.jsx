@@ -19,7 +19,8 @@ const Header = () => {
 
   const isOnline = useOnline();
   const { user } = useContext(UserContext);
-  const cart = useSelector((store) => store.cart.items);
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
 
   return (
     <div
@@ -43,7 +44,10 @@ const Header = () => {
             <li class="px-2 font-bold">FAQ</li>
           </Link>
 
-          <li class="px-2 font-bold">Cart - {cart.length}</li>
+          <Link to="/cart">
+            {" "}
+            <li class="px-2 font-bold">Cart - {cartItems.length}</li>
+          </Link>
         </ul>
       </div>
       <div class="p-5 m-5">{isOnline ? "☀︎" : "🔴"}</div>
